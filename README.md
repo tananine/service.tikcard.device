@@ -1,0 +1,1 @@
+# service.vickq.device
