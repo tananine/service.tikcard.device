@@ -1,1 +1,1 @@
-# service.vickq.device
+# service.tikcard.device
