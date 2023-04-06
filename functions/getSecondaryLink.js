@@ -11,7 +11,6 @@ exports.getSecondaryLink = (accountId) => {
       headers,
     })
     .then((res) => {
-      console.log(res.data.linkId);
       return res.data.linkId;
     })
     .catch((error) => {

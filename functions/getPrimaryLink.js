@@ -9,7 +9,6 @@ exports.getPrimaryLink = (accountId) => {
   return axios
     .get('http://docker.for.mac.localhost:3002/share/primary-link', { headers })
     .then((res) => {
-      console.log(res.data.linkId);
       return res.data.linkId;
     })
     .catch((error) => {
