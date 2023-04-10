@@ -9,7 +9,7 @@ module.exports = (req, res, next) => {
   const token = authHeader.split(' ')[1];
   let decodedToken;
   try {
-    decodedToken = jwt.verify(token, 'secret');
+    decodedToken = jwt.verify(token, process.env.SERVICE_DEVICE_SECRET_KEY);
     if (!decodedToken) {
       throwError(401, 'ยืนยันตัวตนไม่สำเร็จ');
     }
