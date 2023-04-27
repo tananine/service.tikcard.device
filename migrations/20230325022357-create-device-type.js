@@ -12,8 +12,8 @@ module.exports = {
       name: {
         type: Sequelize.STRING,
       },
-      typeLayout: {
-        typeScan: Sequelize.ENUM('single', 'double'),
+      typeScan: {
+        type: Sequelize.ENUM('single', 'double'),
       },
       createdAt: {
         allowNull: false,
