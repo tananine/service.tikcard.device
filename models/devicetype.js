@@ -11,6 +11,7 @@ module.exports = (sequelize, DataTypes) => {
   DeviceType.init(
     {
       name: DataTypes.STRING,
+      typeScan: DataTypes.ENUM('single', 'double'),
     },
     {
       sequelize,
