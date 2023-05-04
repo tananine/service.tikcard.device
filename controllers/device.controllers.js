@@ -13,15 +13,25 @@ const getRedirect = async (req, res, next) => {
       include: { model: db.Device },
     }).then((scanner) => {
       if (!scanner) {
-        throwError(404, 'ไม่พบ scanner นี้', {
-          scannerId: scannerId,
-        });
+        throwError(
+          404,
+          'ไม่พบ scanner นี้',
+          {
+            scannerId: scannerId,
+          },
+          false
+        );
       }
       if (scanner.key !== key) {
-        throwError(404, 'Key ไม่ถูกต้อง', {
-          scannerId: scannerId,
-          key: key,
-        });
+        throwError(
+          404,
+          'Key ไม่ถูกต้อง',
+          {
+            scannerId: scannerId,
+            key: key,
+          },
+          false
+        );
       }
       if (!scanner.Device.accountId) {
         setAccountAction = true;
@@ -58,15 +68,25 @@ const activate = (req, res, next) => {
   })
     .then((scanner) => {
       if (!scanner) {
-        throwError(404, 'ไม่พบ scanner นี้', {
-          scannerId: scannerId,
-        });
+        throwError(
+          404,
+          'ไม่พบ scanner นี้',
+          {
+            scannerId: scannerId,
+          },
+          false
+        );
       }
       if (scanner.key !== key) {
-        throwError(404, 'Key ไม่ถูกต้อง', {
-          scannerId: scannerId,
-          key: key,
-        });
+        throwError(
+          404,
+          'Key ไม่ถูกต้อง',
+          {
+            scannerId: scannerId,
+            key: key,
+          },
+          false
+        );
       }
 
       return db.Device.update(
@@ -78,11 +98,16 @@ const activate = (req, res, next) => {
       if (update[0]) {
         return res.status(200).json('อัพเดทสำเร็จ');
       }
-      throwError(404, 'Update ไม่สำเร็จ', {
-        accountId: accountId,
-        scannerId: scannerId,
-        key: key,
-      });
+      throwError(
+        404,
+        'Update ไม่สำเร็จ',
+        {
+          accountId: accountId,
+          scannerId: scannerId,
+          key: key,
+        },
+        false
+      );
     })
     .catch((error) => {
       next(error);

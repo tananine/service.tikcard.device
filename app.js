@@ -11,10 +11,11 @@ app.use(bodyParser.json());
 app.use('/device', deviceRouter);
 
 app.use((error, req, res, next) => {
+  const showClientMessage = error.showClientMessage;
   const status = error.statusCode || 500;
   const message = error.message;
   const data = error.data;
-  res.status(status).json({ message: message, data: data });
+  res.status(status).json({ message, data, showClientMessage });
 });
 
 const PORT = process.env.PORT;
