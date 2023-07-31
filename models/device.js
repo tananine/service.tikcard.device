@@ -16,6 +16,7 @@ module.exports = (sequelize, DataTypes) => {
     {
       accountId: DataTypes.INTEGER,
       deviceTypeId: DataTypes.INTEGER,
+      tikDeviceId: DataTypes.STRING,
     },
     {
       sequelize,

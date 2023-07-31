@@ -21,6 +21,9 @@ module.exports = {
           as: 'deviceTypeId',
         },
       },
+      tikDeviceId: {
+        type: Sequelize.STRING,
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,

@@ -7,6 +7,7 @@ const getRedirect = async (req, res, next) => {
   const scannerId = req.params.scannerId;
   const key = req.params.key;
   let setAccountAction = false;
+  let tikDeviceId = null;
 
   try {
     const scannerData = await db.Scanner.findByPk(scannerId, {
@@ -35,6 +36,7 @@ const getRedirect = async (req, res, next) => {
       }
       if (!scanner.Device.accountId) {
         setAccountAction = true;
+        tikDeviceId = scanner.Device.tikDeviceId;
         return;
       }
 
@@ -49,6 +51,7 @@ const getRedirect = async (req, res, next) => {
     if (setAccountAction) {
       return res.status(200).json({
         setAccountAction: true,
+        tikDeviceId: tikDeviceId,
         message: 'ตั้งค่า Device เชื่อม Account',
       });
     }
